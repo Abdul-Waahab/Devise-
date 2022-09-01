@@ -5,7 +5,8 @@ class PostsController < ApplicationController
     @post = Post.all.order("created_at DESC")
   end
   def new
-    @post = Post.new   
+    @post = Post.new  
+    authorize @post
   end
   def create
     @post = Post.new(post_params)
