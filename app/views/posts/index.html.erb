@@ -1,7 +1,8 @@
-<h1>usgywfwf</h1>
 <% @posts.each do |post| %> 
 <h2> <%= post.title %> </h2>
 <div><%= truncate(post.body, :length =>35) %></div>
 <br>
 <%= link_to 'Read Post',post_path(post) %>
+<%= link_to "Sign up", new_user_registration_path  %>
+<%= link_to "Log In", user_session_path  %>
 <%end%>
