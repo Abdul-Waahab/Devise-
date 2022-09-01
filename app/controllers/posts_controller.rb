@@ -2,34 +2,40 @@ class PostsController < ApplicationController
   before_action :find_post, only: [:show, :edit, :update, :destroy] 
     
   def index
-    @posts = Post.all.order("created_at DESC")
+    @post = Post.all.order("created_at DESC")
   end
   def new
-    @posts = Post.new   
+    @post = Post.new   
   end
   def create
     @post = Post.new(post_params)
+    authorize @post
     if @post.save
-      redirect_to posts_path
+      redirect_to @post
       else
       render :new
      end
     end    
 
-  def show;end   
+  def show
+  end   
 
-  def edit;end
+  def edit
+    authorize @post
+  end
 
   def update
+    authorize @post
     if @post.update_attributes(post_params)
-      redirect_to post_path
+      redirect_to post_path 
       else
       render :edit
      end
    end    
    def destroy
+    authorize @post
      @post.destroy
-     redirect_to posts_path
+     redirect_to root_path
    end    
     
   private  
