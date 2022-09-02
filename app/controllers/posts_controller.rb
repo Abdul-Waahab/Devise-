@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :find_post, only: %i[show edit update destroy]
-  before_action :authorization, except: %i[show index]
+  before_action :authorization, except: %i[show index new create]
   
   def index
     @post = Post.all.order("created_at DESC")
@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    authorization
     if @post.save
       redirect_to @post
       else
@@ -47,6 +48,6 @@ class PostsController < ApplicationController
   end 
      
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :user_id)
   end
 end

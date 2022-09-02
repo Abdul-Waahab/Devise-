@@ -12,7 +12,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def update?
-    user.present? 
+    user.present?
   end
    
   def destroy?

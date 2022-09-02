@@ -7,4 +7,5 @@
   <div><%= truncate(post.body, length: 35) %></div>
   <br>
   <%= link_to 'Read Post',post_path(post) %>
+  <%= link_to 'Create Post',new_post_path(post) %>
 <%end%>
