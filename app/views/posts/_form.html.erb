@@ -5,6 +5,7 @@
 <%= f.label:body %><br>
 <%= f.text_field:body %><br>
 <br>
+<%= f.hidden_field:user_id, value: current_user.id %>
 <%= f.submit %>
 <% end %>   
 
