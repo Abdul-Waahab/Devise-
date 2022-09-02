@@ -17,11 +17,5 @@ class PostPolicy < ApplicationPolicy
    
   def destroy?
     user.present? 
-  end
-   
-  private
-   
-  def 
-    record
-  end
+  end   
 end
